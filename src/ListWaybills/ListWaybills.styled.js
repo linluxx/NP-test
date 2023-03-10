@@ -24,8 +24,10 @@ const WaybillList = styled.ul`
   }
 `;
 const Waybill = styled.li`
-  font-weight: 500;
   cursor: pointer;
+  &:first-of-type {
+    font-weight: 500;
+  }
   &:not(:last-child) {
     margin-bottom: 8px;
   }

@@ -16,6 +16,7 @@ const StatusTitle = styled.p`
 `;
 const StatusText = styled.span`
   font-weight: 400;
+  line-height: 1.6;
 `;
 
 export { StatusText, StatusTitle, StatusWrap };

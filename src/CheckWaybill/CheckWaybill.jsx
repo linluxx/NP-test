@@ -4,13 +4,20 @@ import { useState } from 'react';
 import { Container, Form } from './CheckWaybill.styled';
 import DeliveryStatus from '../DeliveryStatus/DeliveryStatus';
 import ListWaybills from '../ListWaybills/ListWaybills';
+import { useDispatch } from 'react-redux';
+import { waybillInfo } from '../redux/delivery/operations';
 
 const CheckWaybill = () => {
   const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
 
   const onFormSubmit = evt => {
     evt.preventDefault();
+    dispatch(waybillInfo(number));
     console.log('submit');
+  };
+  const changeValue = value => {
+    setNumber(value);
   };
   return (
     <div>
@@ -36,7 +43,7 @@ const CheckWaybill = () => {
       </Form>
       <Container>
         <DeliveryStatus />
-        <ListWaybills />
+        <ListWaybills changeValue={changeValue} />
       </Container>
     </div>
   );
