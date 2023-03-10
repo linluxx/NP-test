@@ -20,9 +20,8 @@ function App() {
     <Container
       maxWidth="md"
       sx={{
-        border: '7px double mediumpurple',
+        // border: '7px double mediumpurple',
         backgroundColor: '#fff',
-        height: '500px',
       }}
     >
       <TabContext value={value}>
