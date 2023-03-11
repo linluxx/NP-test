@@ -24,51 +24,42 @@ const CheckWaybill = () => {
 
   return (
     <Wrapper>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '100%',
-        }}
-      >
-        <Form onSubmit={onFormSubmit}>
-          <TextField
+      <Form onSubmit={onFormSubmit}>
+        <TextField
+          variant="outlined"
+          label="Номер ТТН"
+          value={number}
+          color="secondary"
+          onChange={evt => {
+            setNumber(evt.target.value);
+          }}
+          sx={{ width: '290px' }}
+        />
+        {tablet ? (
+          <Button
+            type="submit"
             variant="outlined"
-            label="Номер ТТН"
-            value={number}
             color="secondary"
-            onChange={evt => {
-              setNumber(evt.target.value);
+            sx={{ height: '56px' }}
+          >
+            <SendIcon />
+          </Button>
+        ) : (
+          <Button
+            type="submit"
+            variant="outlined"
+            color="secondary"
+            sx={{
+              height: '40px',
+              marginTop: '10px',
+              width: '150px',
             }}
-            sx={{ width: '290px' }}
-          />
-          {tablet ? (
-            <Button
-              type="submit"
-              variant="outlined"
-              color="secondary"
-              sx={{ height: '56px' }}
-            >
-              <SendIcon />
-            </Button>
-          ) : (
-            <Button
-              type="submit"
-              variant="outlined"
-              color="secondary"
-              sx={{
-                height: '56px',
-                marginTop: '10px',
-                width: '150px',
-              }}
-              endIcon={<SendIcon />}
-            >
-              Перевірити
-            </Button>
-          )}
-        </Form>
-      </div>
+            endIcon={<SendIcon />}
+          >
+            Перевірити
+          </Button>
+        )}
+      </Form>
       <Container>
         <DeliveryStatus />
         <ListWaybills changeValue={changeValue} />

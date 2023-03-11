@@ -27,7 +27,7 @@ const ListWaybills = ({ changeValue }) => {
         ))}
       </WaybillList>
       <Button
-        sx={{ width: '235px', marginLeft: 'auto', marginRight: 'auto' }}
+        sx={{ width: '220px', marginLeft: 'auto', marginRight: 'auto' }}
         type="button"
         variant="outlined"
         color="secondary"

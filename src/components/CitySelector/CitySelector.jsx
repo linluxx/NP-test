@@ -1,33 +1,15 @@
 import { Autocomplete, TextField, CircularProgress } from '@mui/material';
 import { useState, useEffect } from 'react';
-import { selectCities } from '../../redux/offices/selectors';
-import { useSelector } from 'react-redux';
-
+import { selectCities, selectCity } from '../../redux/offices/selectors';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCityName } from '../../redux/offices/slice';
 const CitySelector = ({ getCityName }) => {
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
-  const [cityValue, setCityValue] = useState('');
   const loading = open && options.length === 0;
   const citiesList = useSelector(selectCities);
-
-  //   useEffect(() => {
-  //     let active = true;
-  //     if (!loading) {
-  //       return undefined;
-  //     }
-
-  //     (async () => {
-  //       await
-
-  //       if (active) {
-  //         setOptions([...citiesList]);
-  //       }
-  //     })();
-
-  //     return () => {
-  //       active = false;
-  //     };
-  //   }, [loading, citiesList, dispatch]);
+  const cityName = useSelector(selectCity);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!open) {
@@ -38,14 +20,12 @@ const CitySelector = ({ getCityName }) => {
         return { title: item.Description, id: item.CityID };
       })
     );
-    // console.log(options);
-  }, [citiesList, open]);
+  }, [citiesList, open, cityName]);
 
   const onSelectChange = evt => {
-    console.dir(evt.currentTarget);
+    dispatch(setCityName(evt.target.innerText));
     getCityName(evt.target.innerText);
   };
-
   return (
     <Autocomplete
       id="city"
@@ -67,7 +47,6 @@ const CitySelector = ({ getCityName }) => {
         <TextField
           {...params}
           color="secondary"
-          value={cityValue}
           label="Оберіть місто"
           InputProps={{
             ...params.InputProps,

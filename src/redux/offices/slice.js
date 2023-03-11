@@ -8,20 +8,19 @@ const initialState = {
   isWarehousesLoading: false,
   isLoading: false,
   error: '',
+  city: '',
 };
 
 const officesSlice = createSlice({
   name: 'offices',
   initialState,
+  reducers: {
+    setCityName(state, action) {
+      state.city = action.payload;
+    },
+  },
   extraReducers: {
     [getCities.fulfilled]: (state, action) => {
-      // action.payload.data.map(item => {
-      //   // if (!state.cities.includes(item.Description)) {
-      //   //   state.cities.push(item.Description);
-      //   // }
-      //   // return item;
-      //   return state.cities.push(item.Description);
-      // });
       state.cities = action.payload.data;
       if (action.payload.errors) {
         action.payload.errors.map(item => (state.error = item));
@@ -37,12 +36,6 @@ const officesSlice = createSlice({
     },
 
     [getWarehouses.fulfilled]: (state, action) => {
-      // action.payload.data.map(item => {
-      //   if (!state.offices.includes(item.Description)) {
-      //     return state.offices.push(item.Description);
-      //   }
-      //   return item;
-      // });
       state.offices = action.payload.data;
       if (action.payload.errors) {
         action.payload.errors.map(item => (state.error = item));
@@ -59,3 +52,4 @@ const officesSlice = createSlice({
   },
 });
 export const officesReducer = officesSlice.reducer;
+export const { setCityName } = officesSlice.actions;

@@ -8,12 +8,13 @@ import {
   selectIsLoading,
   selectIsWarehousesLoading,
 } from '../../redux/offices/selectors';
+import { useMediaQuery } from '@mui/material';
 
 const WarehousesList = () => {
   const offices = useSelector(selectOffices);
   const isLoading = useSelector(selectIsLoading);
   const IsWarehousesLoading = useSelector(selectIsWarehousesLoading);
-  console.log(offices);
+  const tablet = useMediaQuery('(min-width:600px)');
 
   return (
     <ListWrap>
@@ -28,7 +29,21 @@ const WarehousesList = () => {
               <ListItemIcon>
                 <PlaceOutlinedIcon />
               </ListItemIcon>
-              <ListItemText primary={item.Description} />
+              {tablet ? (
+                <ListItemText
+                  primaryTypographyProps={{
+                    fontSize: 17,
+                  }}
+                  primary={item.Description}
+                />
+              ) : (
+                <ListItemText
+                  primaryTypographyProps={{
+                    fontSize: 14,
+                  }}
+                  primary={item.Description}
+                />
+              )}
             </ListItem>
           ))}
         </List>
