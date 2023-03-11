@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getCities, getWarehouses } from '../../redux/offices/operations';
 import CitySelector from '../CitySelector/CitySelector';
 import WarehousesList from '../WarehousesList/WarehousesList';
+import { Container, Text } from './OfficeSearch.styled';
+import { selectCity } from '../../redux/offices/selectors';
 
 const OfficeSearch = () => {
   const [cityName, setCityName] = useState('');
   const dispatch = useDispatch();
+  const city = useSelector(selectCity);
 
   useEffect(() => {
     dispatch(getCities());
@@ -21,16 +24,11 @@ const OfficeSearch = () => {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-      }}
-    >
+    <Container>
       <CitySelector getCityName={getCityName} />
-      {/* <WarehousesList /> */}
-    </div>
+      <Text>{city}</Text>
+      <WarehousesList />
+    </Container>
   );
 };
 

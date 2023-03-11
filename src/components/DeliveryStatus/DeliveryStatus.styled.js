@@ -4,9 +4,6 @@ import DEVICE from '../../constants/deviceSize';
 const StatusWrap = styled.div`
   border: 1px solid #9c27b0;
   padding: 10px;
-
-  /* min-width: 280px; */
-  width: 100%;
   height: 250px;
   @media ${DEVICE.tablet} {
     padding: 16px;

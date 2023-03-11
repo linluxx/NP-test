@@ -9,7 +9,7 @@ const WaybillList = styled.ul`
   border: 1px solid #9c27b0;
 
   padding: 10px;
-  width: 100%;
+  /* width: 100%; */
   height: 90px;
   text-align: center;
   overflow: auto;

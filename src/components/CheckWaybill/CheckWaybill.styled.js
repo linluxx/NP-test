@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   padding-right: 10px;
   display: flex;
   flex-direction: column;
+
   @media ${DEVICE.tablet} {
     padding-left: 16px;
     padding-right: 16px;
@@ -16,10 +17,12 @@ const Wrapper = styled.div`
 const Form = styled.form`
   text-align: center;
   margin-bottom: 24px;
-  min-width: 300px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 100%;
   @media ${DEVICE.tablet} {
     flex-direction: row;
     align-items: center;
@@ -27,9 +30,11 @@ const Form = styled.form`
 `;
 const Container = styled.div`
   /* display: flex;
-  justify-content: space-between; */
+  justify-content: space-between;
+  flex-direction: column; */
   @media ${DEVICE.laptop} {
     display: flex;
+    flex-direction: row;
   }
 `;
 
