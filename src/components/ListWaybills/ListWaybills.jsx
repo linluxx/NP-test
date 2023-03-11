@@ -2,9 +2,9 @@ import { Button } from '@mui/material';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { Container, Waybill, WaybillList } from './ListWaybills.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectWaybillsList } from '../redux/delivery/selectors';
-import { clearWaybills } from '../redux/delivery/slice';
-import { waybillInfo } from '../redux/delivery/operations';
+import { selectWaybillsList } from '../../redux/delivery/selectors';
+import { clearWaybills } from '../../redux/delivery/slice';
+import { waybillInfo } from '../../redux/delivery/operations';
 
 const ListWaybills = ({ changeValue }) => {
   const waybills = useSelector(selectWaybillsList);
@@ -27,6 +27,7 @@ const ListWaybills = ({ changeValue }) => {
         ))}
       </WaybillList>
       <Button
+        sx={{ width: '235px', marginLeft: 'auto', marginRight: 'auto' }}
         type="button"
         variant="outlined"
         color="secondary"

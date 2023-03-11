@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 // import { contactsReducer } from './contacts/slices/contactsSlice';
 import { deliveryReducer } from './delivery/slice';
+import { officesReducer } from './offices/slice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -31,6 +32,7 @@ const deliveryPersistConfig = {
 export const store = configureStore({
   reducer: {
     delivery: persistReducer(deliveryPersistConfig, deliveryReducer),
+    offices: officesReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
