@@ -21,15 +21,24 @@ const CheckWaybill = () => {
 
   const onFormSubmit = evt => {
     evt.preventDefault();
+    const numericRegex = /^\d+$/; // перевіряє, чи містить рядок лише цифри
+    const formatRegex = /^\d{14}$/; // перевіряє, чи складається рядок з 14 цифр
+
     if (number === '') {
-      return toast.warn('Будь-ласка заповніть поле пошуку', {
+      return toast.warn('Будь-ласка заповніть поле пошуку!', {
         autoClose: 2000,
       });
     }
+    if (!numericRegex.test(number) || !formatRegex.test(number)) {
+      return toast.error('Введено невірний формат даних!', {
+        autoClose: 5000,
+      });
+    }
+
     dispatch(waybillInfo(number));
   };
   const changeValue = value => {
-    setNumber(value);
+    setNumber(value.trim());
   };
 
   return (

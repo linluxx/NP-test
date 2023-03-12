@@ -49,6 +49,11 @@ const CitySelector = ({ getCityName }) => {
       isOptionEqualToValue={(option, value) => option.title === value.title}
       getOptionLabel={option => option.title}
       options={options}
+      renderOption={(props, option) => (
+        <li {...props} key={option.id}>
+          {option.title}
+        </li>
+      )}
       renderInput={params => (
         <TextField
           {...params}

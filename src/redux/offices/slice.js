@@ -19,36 +19,36 @@ const officesSlice = createSlice({
       state.city = action.payload;
     },
   },
-  extraReducers: {
-    [getCities.fulfilled]: (state, action) => {
-      state.cities = action.payload.data;
-      if (action.payload.errors) {
-        action.payload.errors.map(item => (state.error = item));
-      }
-      state.isLoading = false;
-    },
-    [getCities.rejected]: (state, action) => {
-      action.payload.errors.map(item => (state.error = item));
-      state.isLoading = false;
-    },
-    [getCities.pending]: state => {
-      state.isLoading = true;
-    },
-
-    [getWarehouses.fulfilled]: (state, action) => {
-      state.offices = action.payload.data;
-      if (action.payload.errors) {
-        action.payload.errors.map(item => (state.error = item));
-      }
-      state.isWarehousesLoading = false;
-    },
-    [getWarehouses.rejected]: (state, action) => {
-      action.payload.errors.map(item => (state.error = item));
-      state.isWarehousesLoading = false;
-    },
-    [getWarehouses.pending]: state => {
-      state.isWarehousesLoading = true;
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(getCities.fulfilled, (state, action) => {
+        state.cities = action.payload.data;
+        if (action.payload.errors) {
+          action.payload.errors.forEach(item => (state.error = item));
+        }
+        state.isLoading = false;
+      })
+      .addCase(getCities.rejected, (state, action) => {
+        action.payload.errors.forEach(item => (state.error = item));
+        state.isLoading = false;
+      })
+      .addCase(getCities.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(getWarehouses.fulfilled, (state, action) => {
+        state.offices = action.payload.data;
+        if (action.payload.errors) {
+          action.payload.errors.forEach(item => (state.error = item));
+        }
+        state.isWarehousesLoading = false;
+      })
+      .addCase(getWarehouses.rejected, (state, action) => {
+        action.payload.errors.forEach(item => (state.error = item));
+        state.isWarehousesLoading = false;
+      })
+      .addCase(getWarehouses.pending, state => {
+        state.isWarehousesLoading = true;
+      });
   },
 });
 export const officesReducer = officesSlice.reducer;
