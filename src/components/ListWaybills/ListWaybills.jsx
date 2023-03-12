@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 import { Button } from '@mui/material';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { selectWaybillsList } from '../../redux/delivery/selectors';
 import { clearWaybills } from '../../redux/delivery/slice';
 import { waybillInfo } from '../../redux/delivery/operations';
@@ -14,6 +17,13 @@ import { Container, Waybill, WaybillList } from './ListWaybills.styled';
 const ListWaybills = ({ changeValue }) => {
   const waybills = useSelector(selectWaybillsList);
   const dispatch = useDispatch();
+
+  const onClear = evt => {
+    dispatch(clearWaybills());
+    toast.success('Всі накладні були успішно видалені! 🎉', {
+      autoClose: 3000,
+    });
+  };
 
   return (
     <Container>
@@ -37,7 +47,7 @@ const ListWaybills = ({ changeValue }) => {
         variant="outlined"
         color="secondary"
         startIcon={<DeleteOutlinedIcon />}
-        onClick={() => dispatch(clearWaybills())}
+        onClick={onClear}
       >
         Очистити всі ТТН
       </Button>

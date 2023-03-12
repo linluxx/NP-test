@@ -5,6 +5,8 @@ import { TabContext, TabPanel } from '@mui/lab';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import NotListedLocationOutlinedIcon from '@mui/icons-material/NotListedLocationOutlined';
 
+import { ToastContainer } from 'react-toastify';
+
 import CheckWaybill from '../CheckWaybill/CheckWaybill';
 import OfficeSearch from '../OfficeSearch/OfficeSearch';
 
@@ -20,6 +22,7 @@ function App() {
 
   return (
     <Container>
+      <ToastContainer />
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: '#9c27b0' }}>
           {tablet ? (

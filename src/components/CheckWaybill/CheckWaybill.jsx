@@ -5,6 +5,9 @@ import { useDispatch } from 'react-redux';
 import { Button, TextField, useMediaQuery } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import DeliveryStatus from '../DeliveryStatus/DeliveryStatus';
 import ListWaybills from '../ListWaybills/ListWaybills';
 import { waybillInfo } from '../../redux/delivery/operations';
@@ -18,6 +21,11 @@ const CheckWaybill = () => {
 
   const onFormSubmit = evt => {
     evt.preventDefault();
+    if (number === '') {
+      return toast.warn('Будь-ласка заповніть поле пошуку', {
+        autoClose: 2000,
+      });
+    }
     dispatch(waybillInfo(number));
   };
   const changeValue = value => {
