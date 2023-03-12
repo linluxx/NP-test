@@ -1,14 +1,14 @@
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 import { useState } from 'react';
+
+import { Tabs, Tab, useMediaQuery, Box } from '@mui/material';
+import { TabContext, TabPanel } from '@mui/lab';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import NotListedLocationOutlinedIcon from '@mui/icons-material/NotListedLocationOutlined';
+
 import CheckWaybill from '../CheckWaybill/CheckWaybill';
 import OfficeSearch from '../OfficeSearch/OfficeSearch';
-import { TabContext, TabPanel } from '@mui/lab';
-import NotListedLocationOutlinedIcon from '@mui/icons-material/NotListedLocationOutlined';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+
 import { Container } from './App.styled';
-import Box from '@mui/material/Box';
-import { useMediaQuery } from '@mui/material';
 
 function App() {
   const [value, setValue] = useState('check');

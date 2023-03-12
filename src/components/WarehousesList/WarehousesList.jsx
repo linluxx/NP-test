@@ -1,14 +1,22 @@
-import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
-import { ListWrap, Text } from './WarehousesList.styled';
 import { useSelector } from 'react-redux';
-import { selectOffices } from '../../redux/offices/selectors';
+
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  useMediaQuery,
+} from '@mui/material';
+import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import CircularProgress from '@mui/material/CircularProgress';
+
+import { selectOffices } from '../../redux/offices/selectors';
 import {
   selectIsLoading,
   selectIsWarehousesLoading,
 } from '../../redux/offices/selectors';
-import { useMediaQuery } from '@mui/material';
+
+import { ListWrap, Text } from './WarehousesList.styled';
 
 const WarehousesList = () => {
   const offices = useSelector(selectOffices);

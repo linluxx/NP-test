@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
+
 import { getCities, getWarehouses } from '../../redux/offices/operations';
 import CitySelector from '../CitySelector/CitySelector';
 import WarehousesList from '../WarehousesList/WarehousesList';
-import { Container, Text } from './OfficeSearch.styled';
 import { selectCity } from '../../redux/offices/selectors';
+
+import { Container, Text } from './OfficeSearch.styled';
 
 const OfficeSearch = () => {
   const [cityName, setCityName] = useState('');
+
   const dispatch = useDispatch();
   const city = useSelector(selectCity);
 

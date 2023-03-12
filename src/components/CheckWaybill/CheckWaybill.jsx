@@ -1,12 +1,15 @@
-import { Button, TextField } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
 import { useState } from 'react';
-import { Container, Form, Wrapper } from './CheckWaybill.styled';
+
+import { useDispatch } from 'react-redux';
+
+import { Button, TextField, useMediaQuery } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
+
 import DeliveryStatus from '../DeliveryStatus/DeliveryStatus';
 import ListWaybills from '../ListWaybills/ListWaybills';
-import { useDispatch } from 'react-redux';
 import { waybillInfo } from '../../redux/delivery/operations';
-import { useMediaQuery } from '@mui/material';
+
+import { Container, Form, Wrapper } from './CheckWaybill.styled';
 
 const CheckWaybill = () => {
   const [number, setNumber] = useState('');
@@ -16,7 +19,6 @@ const CheckWaybill = () => {
   const onFormSubmit = evt => {
     evt.preventDefault();
     dispatch(waybillInfo(number));
-    console.log('submit');
   };
   const changeValue = value => {
     setNumber(value);

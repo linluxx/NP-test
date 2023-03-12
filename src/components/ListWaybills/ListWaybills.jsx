@@ -1,10 +1,13 @@
+import { useDispatch, useSelector } from 'react-redux';
+
 import { Button } from '@mui/material';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
-import { Container, Waybill, WaybillList } from './ListWaybills.styled';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { selectWaybillsList } from '../../redux/delivery/selectors';
 import { clearWaybills } from '../../redux/delivery/slice';
 import { waybillInfo } from '../../redux/delivery/operations';
+
+import { Container, Waybill, WaybillList } from './ListWaybills.styled';
 
 const ListWaybills = ({ changeValue }) => {
   const waybills = useSelector(selectWaybillsList);

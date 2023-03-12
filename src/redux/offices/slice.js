@@ -27,11 +27,11 @@ const officesSlice = createSlice({
       }
       state.isLoading = false;
     },
-    [getCities.rejected](state, action) {
-      state.error = action.payload.message;
+    [getCities.rejected]: (state, action) => {
+      action.payload.errors.map(item => (state.error = item));
       state.isLoading = false;
     },
-    [getCities.pending](state) {
+    [getCities.pending]: state => {
       state.isLoading = true;
     },
 
@@ -42,11 +42,11 @@ const officesSlice = createSlice({
       }
       state.isWarehousesLoading = false;
     },
-    [getWarehouses.rejected](state, action) {
-      state.error = action.payload.message;
+    [getWarehouses.rejected]: (state, action) => {
+      action.payload.errors.map(item => (state.error = item));
       state.isWarehousesLoading = false;
     },
-    [getWarehouses.pending](state) {
+    [getWarehouses.pending]: state => {
       state.isWarehousesLoading = true;
     },
   },

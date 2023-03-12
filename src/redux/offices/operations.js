@@ -1,5 +1,7 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
+import axios from 'axios';
+
 import { KEY } from '../../api/getInformation';
 
 export const getCities = createAsyncThunk(
