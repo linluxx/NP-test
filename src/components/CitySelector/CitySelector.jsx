@@ -1,12 +1,19 @@
-import { Autocomplete, TextField, CircularProgress } from '@mui/material';
 import { useState, useEffect } from 'react';
-import { selectCities, selectCity } from '../../redux/offices/selectors';
+
 import { useSelector, useDispatch } from 'react-redux';
+
+import PropTypes from 'prop-types';
+
+import { Autocomplete, TextField, CircularProgress } from '@mui/material';
+
+import { selectCities, selectCity } from '../../redux/offices/selectors';
 import { setCityName } from '../../redux/offices/slice';
+
 const CitySelector = ({ getCityName }) => {
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const loading = open && options.length === 0;
+
   const citiesList = useSelector(selectCities);
   const cityName = useSelector(selectCity);
   const dispatch = useDispatch();
@@ -42,7 +49,11 @@ const CitySelector = ({ getCityName }) => {
       isOptionEqualToValue={(option, value) => option.title === value.title}
       getOptionLabel={option => option.title}
       options={options}
-      loading={loading}
+      renderOption={(props, option) => (
+        <li {...props} key={option.id}>
+          {option.title}
+        </li>
+      )}
       renderInput={params => (
         <TextField
           {...params}
@@ -63,6 +74,10 @@ const CitySelector = ({ getCityName }) => {
       )}
     />
   );
+};
+
+CitySelector.propTypes = {
+  getCityName: PropTypes.func.isRequired,
 };
 
 export default CitySelector;

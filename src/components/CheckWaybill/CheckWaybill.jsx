@@ -1,12 +1,18 @@
-import { Button, TextField } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
 import { useState } from 'react';
-import { Container, Form, Wrapper } from './CheckWaybill.styled';
+
+import { useDispatch } from 'react-redux';
+
+import { Button, TextField, useMediaQuery } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import DeliveryStatus from '../DeliveryStatus/DeliveryStatus';
 import ListWaybills from '../ListWaybills/ListWaybills';
-import { useDispatch } from 'react-redux';
 import { waybillInfo } from '../../redux/delivery/operations';
-import { useMediaQuery } from '@mui/material';
+
+import { Container, Form, Wrapper } from './CheckWaybill.styled';
 
 const CheckWaybill = () => {
   const [number, setNumber] = useState('');
@@ -15,11 +21,24 @@ const CheckWaybill = () => {
 
   const onFormSubmit = evt => {
     evt.preventDefault();
+    const numericRegex = /^\d+$/; // перевіряє, чи містить рядок лише цифри
+    const formatRegex = /^\d{14}$/; // перевіряє, чи складається рядок з 14 цифр
+
+    if (number === '') {
+      return toast.warn('Будь-ласка заповніть поле пошуку!', {
+        autoClose: 2000,
+      });
+    }
+    if (!numericRegex.test(number) || !formatRegex.test(number)) {
+      return toast.error('Введено невірний формат даних!', {
+        autoClose: 5000,
+      });
+    }
+
     dispatch(waybillInfo(number));
-    console.log('submit');
   };
   const changeValue = value => {
-    setNumber(value);
+    setNumber(value.trim());
   };
 
   return (

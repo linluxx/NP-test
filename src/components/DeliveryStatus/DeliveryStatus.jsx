@@ -1,9 +1,11 @@
 import { useSelector } from 'react-redux';
+
 import {
   selectSentFrom,
   selectSentTo,
   selectStatus,
 } from '../../redux/delivery/selectors';
+
 import { StatusText, StatusTitle, StatusWrap } from './DeliveryStatus.styled';
 
 const DeliveryStatus = () => {

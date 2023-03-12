@@ -29,9 +29,6 @@ const Form = styled.form`
   }
 `;
 const Container = styled.div`
-  /* display: flex;
-  justify-content: space-between;
-  flex-direction: column; */
   @media ${DEVICE.laptop} {
     display: flex;
     flex-direction: row;
