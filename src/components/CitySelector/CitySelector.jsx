@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 import { Autocomplete, TextField, CircularProgress } from '@mui/material';
 
 import { selectCities, selectCity } from '../../redux/offices/selectors';
@@ -67,6 +69,10 @@ const CitySelector = ({ getCityName }) => {
       )}
     />
   );
+};
+
+CitySelector.propTypes = {
+  getCityName: PropTypes.func.isRequired,
 };
 
 export default CitySelector;

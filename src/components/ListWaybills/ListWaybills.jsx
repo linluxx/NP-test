@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 import { Button } from '@mui/material';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
@@ -41,6 +43,10 @@ const ListWaybills = ({ changeValue }) => {
       </Button>
     </Container>
   );
+};
+
+ListWaybills.propTypes = {
+  changeValue: PropTypes.func.isRequired,
 };
 
 export default ListWaybills;
